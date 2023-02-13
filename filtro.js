@@ -8,24 +8,25 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsByName("lista-de-productos")
-const $i = document.querySelector('.input');
-
+const li = document.getElementById("lista-de-productos")
+const input = document.querySelector('.input'); //Cambiar nombre $i - input
+const displayProductos = (productos) => { //Colocar la funcion
 for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+  const pro = document.createElement("div")
+  pro.classList.add("producto")
 
-  var ti = document.createElement("p")
+  let ti = document.createElement("p")
   ti.classList.add("titulo")
   ti.textContent = productos[i].nombre
   
-  var imagen = document.createElement("img");
+  let imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+  pro.appendChild(ti)
+  pro.appendChild(imagen)
 
-  li.appendChild(d)
+  li.appendChild(pro)
+}
 }
 
 displayProductos(productos)
@@ -36,7 +37,7 @@ botonDeFiltro.onclick = function() {
     li.removeChild(li.firstChild);
   }
 
-  const texto = $i.value;
+  const texto = input.value;
   console.log(texto);
   const productosFiltrados = filtrado(productos, texto );
 
